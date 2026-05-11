@@ -17,7 +17,7 @@ const Login = () => {
     const handleLogin = async ()=> {
       
       try{
-        const res = await axios.post(BASE_URL + "/login",{
+        const res = await axios.post(BASE_URL + "/login", {
           emailId,
           password
         },
@@ -29,7 +29,7 @@ const Login = () => {
 
       }catch(err){
         setError(err?.response?.data || "An error occurred")
-        console.log(err)
+        
       }
     }
 

@@ -16,7 +16,7 @@ const userData = useSelector((store)=>store.user)
 
     if(userData) return;
     try{
-       const res = await axios.get(BASE_URL + "/profile/view", {withCredentials:true, })
+       const res = await axios.get(BASE_URL + "/profile/view", { withCredentials:true })
        dispatch(addUser(res.data))
     }
     catch(err){
