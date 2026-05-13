@@ -23,7 +23,7 @@ const userData = useSelector((store)=>store.user)
       if(err.status===401){
         navigate("/Login")
       }
-      console.log(err)
+    
     }
   }
    useEffect(()=> {
