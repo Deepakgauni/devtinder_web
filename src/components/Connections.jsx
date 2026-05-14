@@ -30,7 +30,7 @@ const Connections = () => {
     if(connections.length === 0 ) return <h2>No connections found</h2>
 
   return (
-    <div className='text-center my-10'>
+    <div className='text-center my-10 '>
       <h2 className='text-bold text-2xl'>Connections</h2>
 
       {connections.map((connection)=>{
