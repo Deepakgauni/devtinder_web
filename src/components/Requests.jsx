@@ -1,13 +1,28 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../utils/constant'
 import { useDispatch, useSelector } from 'react-redux'
-import { addRequests } from '../utils/requestSlice'
+import { addRequests, removeRequest } from '../utils/requestSlice'
 
 const Requests = () => {
 
     const requests = useSelector((store)=> store.requests)
    const dispatch = useDispatch()
+
+   
+
+       const reviewRequests = async (status, _id) => {
+        try{
+          const res  = axios.post(BASE_URL + "/request/review/" + status + "/" + _id , {}, {withCredentials: true})
+
+          dispatch(removeRequest(_id))
+        }catch(err){
+
+        }
+      
+        }
+
+
 
     const fetchRequests = async()=>{
         try{
@@ -46,8 +61,8 @@ if(!requests ) return
             <div key={_id} className= 'justify-between items-center m-4 p-4 rounded-lg bg-base-300 w-2/3 mx-auto'> 
               <div className='text-left mx-4'> <h2> {firstName + " " + lastName} </h2></div>
                <div>
-                <button className="btn btn-primary mx-2 ">Reject</button>
-               <button className="btn btn-secondary mx-2">Accept</button>
+                <button className="btn btn-primary mx-2 " onClick={()=>reviewRequests('rejected', requests._id)}>Reject</button>
+               <button className="btn btn-secondary mx-2" onClick={()=>reviewRequests('accepted', requests._id)}>Accept</button>
                </div>
             </div>
         )
