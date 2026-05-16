@@ -27,6 +27,9 @@ const Feed = () => {
     getFeed()
 }, [])
 
+if(!feed) return
+
+if(feed.length == 0) return <h2 >no users found</h2>
 
   return ( feed &&(
 
